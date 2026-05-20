@@ -50,6 +50,6 @@ Sigue estos pasos para clonar el repositorio y ejecutar el entorno de desarrollo
 
 ### 1. Clonar el repositorio e instalar dependencias
 ```bash
-git clone [https://github.com/genmath26-bit/fastech-react.git](git@github.com:genmath26-bit/fastech-react.git)
+git clone [https://github.com/genmath20-bit/fastech-react.git](https://github.com/genmath20-bit/fastech-react.git)
 cd fastech-react
 npm install
