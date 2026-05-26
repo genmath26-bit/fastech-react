@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# Fastech - Sistema de Control de Inventario 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Fastech es una aplicación web full-stack diseñada para la gestión y control automatizado de inventarios en tiempo real. El proyecto implementa una arquitectura desacoplada utilizando un backend robusto en **Node.js/Express** conectado a una base de datos **MySQL/MariaDB**, y una interfaz de usuario dinámica e interactiva construida en **React.js**.
 
-## Available Scripts
+La plataforma prioriza la seguridad y el rendimiento mediante el uso de mecanismos avanzados de autenticación criptográfica y control de acceso por tokens.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Demostración Visual
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Panel de Autenticación (Login)
+<img width="620" height="496" alt="imagen" src="https://github.com/user-attachments/assets/c295ab25-1858-426a-9170-463fc3188fa2" />
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Panel de Control de Inventario (CRUD)
+<img width="620" height="496" alt="imagen" src="https://github.com/user-attachments/assets/9db4a180-0bcc-440e-8c78-89f8ef74a8fc" />
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Arquitectura y Tecnologías
 
-### `npm run build`
+### Frontend (Cliente)
+* **React.js (Single Page Application):** Gestión del árbol de componentes, ciclo de vida y renderizado condicional.
+* **Hooks Avanzados (`useState`, `useEffect`):** Control del estado global del inventario, manejo de formularios y persistencia de sesión.
+* **Fetch API:** Consumo asíncrono de endpoints RESTful con inyección dinámica de cabeceras HTTP de autorización.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Backend (Servidor)
+* **Node.js & Express:** Entorno de ejecución y framework para la construcción de la API REST de alto rendimiento.
+* **MySQL / MariaDB:** Sistema de gestión de base de datos relacional para la persistencia del inventario y registros de usuario.
+* **CORS (Cross-Origin Resource Sharing):** Configuración de políticas de seguridad para la comunicación selectiva entre dominios.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Características del Sistema de Seguridad
 
-### `npm run eject`
+El núcleo de seguridad de Fastech mitiga las vulnerabilidades estándar de la web mediante tres capas técnicas:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1.  **Protección de Credenciales en Reposo (Bcryptjs):** Las contraseñas se procesan mediante un algoritmo de hashing asimétrico unidireccional basado en *Blowfish* con un factor de costo (*salt*) de 10. Las credenciales nunca se almacenan en texto plano en la base de datos.
+2.  **Autenticación sin Estado (JSON Web Tokens):** Tras el inicio de sesión, el servidor expide un token criptográfico firmado con el algoritmo `HS256`. Este token transporta la identidad cifrada del usuario y expira estrictamente en 2 horas.
+3.  **Middleware Perimetral de Autorización:** Las rutas críticas del inventario (`POST`, `PUT`, `DELETE`) están blindadas por un interceptor secuencial en Express que valida la integridad y vigencia de la firma del token antes de permitir operaciones en la base de datos, respondiendo con estados `HTTP 401 Unauthorized` si detecta anomalías.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Instalación y Configuración Local
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Sigue estos pasos para clonar el repositorio y ejecutar el entorno de desarrollo local:
 
-## Learn More
+### Prerrequisitos
+* Node.js (v16 o superior)
+* Servidor MySQL / MariaDB activo
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 1. Clonar el repositorio e instalar dependencias
+```bash
+git clone [https://github.com/genmath20-bit/fastech-react.git](https://github.com/genmath20-bit/fastech-react.git)
+cd fastech-react
+npm install
